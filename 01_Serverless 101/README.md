@@ -11,20 +11,20 @@ Follow the instruction and install the CLI from [http://serverless.com/](http://
 <details>
 <summary><b>HOW TO create serverless project</b></summary><p>
 
-1. Create a directory for your serverless project.
+1.  Create a directory for your serverless project.
 
     ```
     mkdir hello-world
     cd hello-world
     ```
 
-2. Initialise the project:
-    
+2.  Initialise the project:
+
     `npm init`
-    
+
     Name the project accordingly and you can accept the rest of the defaults.
 
-3. Install the `Serverless` framework as dev dependency.
+3.  Install the `Serverless` framework as dev dependency.
 
     `npm install --save-dev serverless`
 
@@ -35,19 +35,20 @@ Follow the instruction and install the CLI from [http://serverless.com/](http://
         "sls": "serverless"
       },
     ```
-    
+
     Now you can run serverless using `npm run sls [-- <args>...]`
 
     The special option `--` is used to delimit the end of the options for `npm run` and pass all the arguments after the `--` directly to your script
 
     > _Pro tip:_ Most examples gives steps to install and run Serverless Framework globally (allowing you to directly call `serverless` in your terminal). However, global package dependency will likely to cause issues in the future between two projects depending on different versions, especially when used by build and deploy steps on your CI.
 
-4. Create nodejs Serverless project using one of the default templates:
+4.  Create nodejs Serverless project using one of the default templates:
 
-    `npm run sls -- create --template aws-nodejs`
+        `npm run sls -- create --template aws-nodejs`
 
-    See more information about `serverless create` command on [CLI documentation](https://serverless.com/framework/docs/providers/aws/cli-reference/create/) page.
-</p></details>
+        See more information about `serverless create` command on [CLI documentation](https://serverless.com/framework/docs/providers/aws/cli-reference/create/) page.
+
+    </p></details>
 
 <details>
 <summary><b>HOW TO configure the serverless application</b></summary><p>
@@ -58,10 +59,10 @@ Follow the instruction and install the CLI from [http://serverless.com/](http://
 
 ```javascript
 const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-        message: 'hello world'
-    })
+  statusCode: 200,
+  body: JSON.stringify({
+    message: "hello world"
+  })
 };
 ```
 
@@ -85,18 +86,19 @@ This maps an API Gateway endpoint as the event source for our Lambda function.
 
 1. Run `invoke local` command:
 
-    `npm run sls -- invoke local --function hello`
+   `npm run sls -- invoke local --function hello`
 
-    See more information about `invoke local` command on [CLI documentation](https://serverless.com/framework/docs/providers/aws/cli-reference/invoke-local/) page.
+   See more information about `invoke local` command on [CLI documentation](https://serverless.com/framework/docs/providers/aws/cli-reference/invoke-local/) page.
 
 2. Verify that the function returns the following output:
 
 ```json
 {
-    "statusCode": 200,
-    "body": "{\"message\":\"hello world\"}"
+  "statusCode": 200,
+  "body": "{\"message\":\"hello world\"}"
 }
 ```
+
 </p></details>
 
 <details>
@@ -106,7 +108,7 @@ This maps an API Gateway endpoint as the event source for our Lambda function.
 
 2. Configure the default profile to an admin AWS user on your account:
 
-    `aws configure`
+   `aws configure`
 
 </p></details>
 
@@ -115,9 +117,9 @@ This maps an API Gateway endpoint as the event source for our Lambda function.
 
 1. Run `deploy` command:
 
-    `npm run sls -- deploy`
+   `npm run sls -- deploy`
 
-    See more information about `deploy` command on [CLI documentation](https://serverless.com/framework/docs/providers/aws/cli-reference/deploy/) page.
+   See more information about `deploy` command on [CLI documentation](https://serverless.com/framework/docs/providers/aws/cli-reference/deploy/) page.
 
 2. This creates an API in Amazon API Gateway. In the output you should see something like this:
 
@@ -130,9 +132,10 @@ Curl the endpoint and see that it returns a 200 response, with the JSON payload:
 
 ```json
 {
-    "message": "hello world"
+  "message": "hello world"
 }
 ```
+
 </p></details>
 
 Congratulations! You have successfully successfully created and deployed your first Serverless API project.
@@ -192,7 +195,7 @@ The Serverless framework enforces a naming convention, but you can override the 
 <details>
 <summary><b>Changing the versioning behaviour</b></summary><p>
 
-By default, the Serverless framework would publish a new version of your function with every deployment. But, you can customize this behaviour too. 
+By default, the Serverless framework would publish a new version of your function with every deployment. But, you can customize this behaviour too.
 
 > _Pro tip:_ For non-production environments, where we're not concerned with rollbacks it's best to disable this default behaviour. Lambda has a default regional limit (**hard limit**) of 75GB of deployment artifacts. Which is why you should disable this behaviour, otherwise you'll likely reach the limit, unless you implement a mechanism for periodically cleaning up old versions.
 

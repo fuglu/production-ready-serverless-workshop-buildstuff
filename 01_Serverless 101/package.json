@@ -1,0 +1,12 @@
+{
+  "name": "serverless101",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "serverless": "^1.33.1"
+  },
+  "scripts": {
+    "sls": "serverless"
+  }
+}
